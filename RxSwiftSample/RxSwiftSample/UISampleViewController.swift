@@ -15,7 +15,7 @@ class UISampleViewController: UIViewController {
     // リセット
     @IBOutlet private weak var resetButton: UIButton!
 
-    // ■入力イベント
+    // 入力イベント
     @IBOutlet private weak var indicatorSwitch: UISwitch!
     @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
 
@@ -45,11 +45,44 @@ class UISampleViewController: UIViewController {
 
 
     // データ
-
+    private let disposeBag = DisposeBag()
 
     // ---
     override func viewDidLoad() {
         super.viewDidLoad()
+        resetAllInput()
+        setupResetButton()
+        setupInputEvents()
+        setupImageViewEvents()
+    }
+
+    /// 全部の値を初期値に戻す
+    private func resetAllInput() {
+
+    }
+
+    /// リセットボタンのイベント設定
+    private func setupResetButton() {
+        // リセットボタンタップイベント
+        resetButton.rx.tap
+            // // 連打防止: 2秒間たつまで次のイベントを発火しない。
+            // .debounce(2.0, scheduler: MainScheduler.instance)
+            .subscribe(onNext: {
+                // 全部の値を初期値に戻す
+                self.resetAllInput()
+            })
+            .disposed(by: disposeBag)
+
+    }
+
+    /// 入力イベント欄のイベント設定
+    private func setupInputEvents() {
+
+    }
+
+    /// UIImageViewの状態変化欄のイベント設定
+    private func setupImageViewEvents() {
+
     }
 
     override func didReceiveMemoryWarning() {
