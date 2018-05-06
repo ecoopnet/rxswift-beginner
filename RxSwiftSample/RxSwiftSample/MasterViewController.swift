@@ -19,7 +19,8 @@ class MasterViewController: UITableViewController {
         }
     }
     private let items: [Item] = [
-        Item.simple(segue: "Detail")
+        Item.simple(segue: "RxCocoaSample"),
+        Item.simple(segue: "Detail"),
     ]
 
     override func viewDidLoad() {
