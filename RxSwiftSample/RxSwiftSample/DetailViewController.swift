@@ -123,7 +123,7 @@ class DetailViewController: UIViewController {
             .filter { (input: [ButtonType]) in input == [.up, .up, .down, .down, .left, .right, .left, .right, .b, .a] } // 入力コマンドチェック
             //.do(onNext: { print("filtered: \($0)")})
             .subscribe(
-                onNext: { _ in print("コ○ミコマンド発動！") }
+                onNext: { _ in DialogUtils.showDialog(presenter: self, message: "コマンド発動しました！") }
         ).disposed(by: disposeBag)
     }
 
