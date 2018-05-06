@@ -13,24 +13,20 @@ import RxSwift
 struct DialogUtils {
     private init() { }
 
-    /// ダイアログ生成
-    static func createDialog(title: String? = nil, message: String, callback: (() -> Void)? = nil) -> UIAlertController {
+    /// アラートダイアログ表示(コールバック版)
+    static func showDialog(presenter: UIViewController, title: String? = nil, message: String, callback: (() -> Void)? = nil) {
         let alertController = UIAlertController(title: title ?? "", message: message, preferredStyle: .alert)
         let otherAction = UIAlertAction(title: "OK", style: .default) { _ in
             callback?()
         }
         alertController.addAction(otherAction)
-        return alertController
-    }
 
-    /// ダイアログ表示(コールバック版)
-    static func showDialog(presenter: UIViewController, title: String? = nil, message: String, callback: (() -> Void)? = nil) {
         presenter.present(
-            createDialog(message: message),
+            alertController,
             animated: true, completion: nil)
     }
 
-    /// ダイアログ表示（Rx版）
+    /// アラートダイアログ表示（Rx版）
     /// ダイアログを閉じた時に onNext(void)が一度だけ呼ばれ,
     /// その後 onComplete() が呼ばれます。エラーすることはありません。
     /// (Completableを使えばより明示的になりますが、
@@ -43,6 +39,57 @@ struct DialogUtils {
             }
             return Disposables.create() // nop
         }
+            // ダイアログ表示は(裏で呼ばれたとしても)UIスレッドで行う
+            .subscribeOn(MainScheduler.instance)
+    }
+
+    enum Result {
+        case ok
+        case cancel
+    }
+
+    typealias DialogResultFunc = (_ result: Result) -> Void
+
+    /// OK/キャンセル確認ダイアログ表示(コールバック版)
+    static func showOkCancelDialog(
+        presenter: UIViewController,
+        title: String? = nil,
+        message: String,
+        okLabel: String? = nil,
+        cancelLabel: String? = nil,
+        callback: DialogResultFunc? = nil) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: cancelLabel ?? "キャンセル", style: .cancel) { _ in
+            callback?(.cancel)
+        }
+        let okAction = UIAlertAction(title: okLabel ?? "OK", style: .default) { _ in
+            callback?(.ok)
+        }
+        alertController.addAction(cancelAction)
+        alertController.addAction(okAction)
+
+        presenter.present(
+            alertController,
+            animated: true, completion: nil)
+    }
+
+    /// OK/キャンセル確認ダイアログ表示（Rx版）
+    /// ダイアログを閉じた時に onNext(Bool)が一度だけ呼ばれ,
+    /// その後 onComplete() が呼ばれます。エラーすることはありません。
+    /// OKならtrue, キャンセルならfalseを流します。
+    static func rx_showOkCancelDialog(
+        presenter: UIViewController,
+        title: String? = nil,
+        message: String,
+        okLabel: String? = nil,
+        cancelLabel: String? = nil) -> Observable<Bool> {
+        return Observable.create { observer in
+            showOkCancelDialog(presenter: presenter, title: title, message: message) { result in
+                observer.on(.next(result == .ok))
+                observer.on(.completed)
+            }
+            return Disposables.create() // nop
+            }
             // ダイアログ表示は(裏で呼ばれたとしても)UIスレッドで行う
             .subscribeOn(MainScheduler.instance)
     }
