@@ -65,8 +65,8 @@ class UISampleViewController: UIViewController {
     private func setupResetButton() {
         // リセットボタンタップイベント
         resetButton.rx.tap
-            // // 連打防止: 2秒間たつまで次のイベントを発火しない。
-             .debounce(5.0, scheduler: MainScheduler.instance)
+            // // 連打防止: 5秒間たつまで次のイベントを発火しない。
+            // .throttle(5.0, latest: false, scheduler: MainScheduler.instance)
             .subscribe(onNext: {
                 // 全部の値を初期値に戻す
                 self.resetAllInput()
