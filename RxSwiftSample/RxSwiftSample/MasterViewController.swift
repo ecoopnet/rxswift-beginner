@@ -19,7 +19,8 @@ class MasterViewController: UITableViewController {
         }
     }
     private let items: [Item] = [
-        Item.simple(segue: "RxCocoaSample"),
+        Item(title:"RxCocoaサンプル", segue: "RxCocoaSample"),
+        Item(title:"サンプルコード集", segue: "Misc"),
         Item(title:"おまけ", segue: "Omake"),
     ]
 

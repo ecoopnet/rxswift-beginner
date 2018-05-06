@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+// RxCocoa サンプル
 class UISampleViewController: UIViewController {
     // UI Outlet
     // リセット
