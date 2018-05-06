@@ -43,66 +43,6 @@ class DetailViewController: UIViewController {
         }
         watchSecretCommands()
 
-////        Observable.from(["hoge","a","xx","piy","puyyy","aga","b"]).startWith("fuga").groupBy {
-////            $0.count
-////            }
-////        }
-//        Observable.of(1,23,4).subscribe()
-//        let o1 = Observable.from([1,3,5,7,9], scheduler: MainScheduler.instance)
-////        let pub1 = PublishSubject<Int>()
-////        let o1 = pub1
-//            .map { $0 * 2
-//            }
-//            .do(
-//                onNext: { print("doOnNext:\($0)") },
-//                onError:{ print("doOnError:\($0)")},
-//                onCompleted: {print("doOncompleted")},
-//                onSubscribe: { print("doOnSubscribe")},
-//                onSubscribed: { print("doOnSubscribed")},
-//                onDispose: {print("doOnDispose")})
-////            .share(replay: 1)
-////            .do(
-////            onNext: { print("doOnNext2:\($0)") },
-////            onError:{ print("doOnError2:\($0)")},
-////           onCompleted: {print("doOncompleted2")},
-////           onSubscribe: { print("doOnSubscribe2")},
-////           onSubscribed: { print("doOnSubscribed2")},
-////           onDispose: {print("doOnDispose2")})
-////        pub1.onNext(1)
-//        sleep(1)
-////        pub1.onNext(2)
-//        _ = o1.subscribe(onNext: { print("s1:onNext:\($0)")})
-////        pub1.onNext(3)
-//        _ = o1.subscribe(onNext: { print("s2:onNext:\($0)")})
-//        //o1.connect()
-////        pub1.onNext(4)
-////        pub1.onNext(5)
-////        pub1.onCompleted()
-//
-//        // Observable.from([1,3,5,7,9], scheduler: MainScheduler.instance).map { "Value: \($0)"}
-//        Observable.create { (observer: AnyObserver<String>) in
-//            sleep(1)
-//            observer.onNext("")
-//            return Disposables.create()
-//        }
-//
-//        .
-////        keyInputStream.flatMap {
-////            if $0 != .up { return Observable.just(false) }
-////            return keyInputStream.take(9)
-////                .filter { (input: [ButtonType]) in input == [ /* .up,*/ .up, .down, .down, .left, .right, .left, .right, .b, .a] }
-////
-////        }
-////
-////            .buffer(timeSpan: 10.0, count: 10, scheduler: MainScheduler.instance)
-////            .do(onNext: { print("buffered: \($0)")})
-////            .filter { (input: [ButtonType]) in input == [.up, .up, .down, .down, .left, .right, .left, .right, .b, .a] }
-////            .do(onNext: { print("filtered: \($0)")})
-////            .subscribe(onNext: { _ in print("コナミコマンド発動！");})
-////            .disposed(by: disposeBag)
-//
-//        // Observable.merge(buttons.map { k,v in v.rx.tap.map { k } })
-
         self.view.gestureRecognizers?.append(UITapGestureRecognizer(target: self, action: #selector(didTap)))
     }
 
