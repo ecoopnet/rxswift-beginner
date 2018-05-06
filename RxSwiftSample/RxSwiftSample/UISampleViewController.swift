@@ -66,10 +66,11 @@ class UISampleViewController: UIViewController {
         // リセットボタンタップイベント
         resetButton.rx.tap
             // // 連打防止: 2秒間たつまで次のイベントを発火しない。
-            // .debounce(2.0, scheduler: MainScheduler.instance)
+             .debounce(5.0, scheduler: MainScheduler.instance)
             .subscribe(onNext: {
                 // 全部の値を初期値に戻す
                 self.resetAllInput()
+                DialogUtils.rx_showDialog(presenter: self, message: "リセットしました").subscribe().disposed(by: self.disposeBag)
             })
             .disposed(by: disposeBag)
 
