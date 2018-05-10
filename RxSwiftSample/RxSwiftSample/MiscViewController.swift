@@ -22,6 +22,9 @@ class MiscViewController: UIViewController {
         HelloRxWorld3()
         sampleCreateObservable()
         sampleCreatePublishSubject()
+
+        sampleDispose()
+        sampleOperators()
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,9 +51,6 @@ class MiscViewController: UIViewController {
         subject.onNext("Rx")
         subject.onNext("World")
         subject.onCompleted()
-
-        disposable.dispose()
-
     }
 
     func HelloRxWorld2() {
@@ -96,6 +96,22 @@ class MiscViewController: UIViewController {
         )
     }
 
+    func sampleDispose() {
+        print("sampleDispose")
+        let tapObservable = Observable<Int>.timer(
+            1.0,
+            period: 0.1,
+            scheduler: MainScheduler.instance).map({ t in CGPoint(x:t,y:t)}
+        )
+         let disposable = tapObservable.subscribe(
+            onNext: { print("next(\($0))") },
+            onCompleted: { print("completed") },
+            onDisposed: {print("disposed") }
+        )
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2.0) {
+            disposable.dispose()
+        }
+    }
     func sampleDrive() {
         // Observable の結果を subscribe で受け取る
         let observable = Observable.from(["a", "b", "c", "d", "e"])
@@ -210,7 +226,44 @@ class MiscViewController: UIViewController {
             ).disposed(by: disposeBag)
         // -> error (completeしない)
 
+        let observable5 = Observable<Int>.create { observer in
+            observer.onNext(1)
+            return Disposables.create()
+        }
+        observable5
+            .subscribe(
+                onNext: { print($0) },
+                onCompleted: { print("complete")}
+            ).disposed(by: disposeBag)
+        // -> 1, complete
     }
+
+    func sampleOperators() {
+        print("sampleOperators")
+        print("filter/map/flatmap")
+        let observable: Observable<Int> = Observable.of(1,2,3,4,5,6,7,8,9,10)
+        observable
+            .filter { n in n % 2 == 1 } // 1,3,5,7,9
+            .map { n in n * 2 } // 2,6,10,14,18
+            .flatMap { n in Observable.just("v\(n)") } // "v2","v6","v10","v14","v18"
+            .subscribe(onNext: { print($0) }) //
+            .disposed(by: disposeBag)
+        // -> "v2","v6","v10","v14","v18", complete
+
+        print("zip")
+        let observable2: Observable<Int> = Observable.of(1,2,3,4,5)
+        let observable3: Observable<String> = Observable.of("A","B","C","D")
+        Observable
+            .zip(observable2,observable3)
+            .map { v1, v2 in "\(v1)\(v2)" }
+            .subscribe(
+                onNext: { print($0) },
+                onCompleted: { print("completed") }
+            )
+            .disposed(by: disposeBag)
+        // -> "1A","2B","3C","4D",complete
+    }
+
     // Observable生成(デバッグ詳細出力)
     func sampleCreateObservableDebug() {
         print("sampleCreateObservableDebug:")
