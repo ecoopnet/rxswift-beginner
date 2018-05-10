@@ -12,6 +12,8 @@ import RxCocoa
 
 // RxCocoa サンプル
 class UISampleViewController: UIViewController {
+    private let disposeBag = DisposeBag()
+
     // UI Outlet
     // リセット
     @IBOutlet private weak var resetButton: UIButton!
@@ -48,10 +50,6 @@ class UISampleViewController: UIViewController {
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var imageViewWidthConstraint: NSLayoutConstraint!
 
-
-
-    // データ
-    private let disposeBag = DisposeBag()
 
     // ---
     override func viewDidLoad() {

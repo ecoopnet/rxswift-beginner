@@ -12,9 +12,9 @@ import RxCocoa
 
 /// おまけ画面(コ○ミコマンド)
 class DetailViewController: UIViewController {
+    private let disposeBag = DisposeBag()
 
     @IBOutlet weak var detailDescriptionLabel: UILabel!
-    private let disposeBag = DisposeBag()
     enum ButtonType: String {
         case up, down, left, right, a, b, pause
     }
