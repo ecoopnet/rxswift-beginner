@@ -150,6 +150,21 @@
             </objects>
             <point key="canvasLocation" x="1649" y="-630"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="4it-3P-t1r">
+            <objects>
+                <viewController id="Uzl-p5-SeP" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1BF-4X-xgx">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="9pn-WI-faO"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ieg-9z-FWD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="544" y="350"/>
+        </scene>
         <!--RxCocoaサンプル-->
         <scene sceneID="2yU-H0-jLa">
             <objects>
@@ -590,6 +605,7 @@
                         <segue destination="JEX-9P-axG" kind="show" identifier="Omake" id="vnw-4H-VyB"/>
                         <segue destination="sjF-yg-MLc" kind="show" identifier="RxCocoaSample" id="Yse-Ym-mA0"/>
                         <segue destination="2VC-Wk-eQA" kind="show" identifier="Misc" id="rDD-0l-dX8"/>
+                        <segue destination="Uzl-p5-SeP" kind="show" identifier="Throttle" id="GVy-ih-MKt"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>

@@ -21,6 +21,7 @@
 		B5CB9354209EEE1C00BF706C /* UISampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CB9353209EEE1C00BF706C /* UISampleViewController.swift */; };
 		B5CB935A209F064F00BF706C /* DialogUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CB9359209F064F00BF706C /* DialogUtils.swift */; };
 		B5CB935C209F60C100BF706C /* MiscViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CB935B209F60C100BF706C /* MiscViewController.swift */; };
+		B5F1F55E20FB59B000B14AD4 /* ThrottleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F1F55D20FB59B000B14AD4 /* ThrottleViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		B5CB9353209EEE1C00BF706C /* UISampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISampleViewController.swift; sourceTree = "<group>"; };
 		B5CB9359209F064F00BF706C /* DialogUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogUtils.swift; sourceTree = "<group>"; };
 		B5CB935B209F60C100BF706C /* MiscViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiscViewController.swift; sourceTree = "<group>"; };
+		B5F1F55D20FB59B000B14AD4 /* ThrottleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThrottleViewController.swift; sourceTree = "<group>"; };
 		D1B4073C5DD8626BE7FD5905 /* Pods-RxSwiftSampleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwiftSampleUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxSwiftSampleUITests/Pods-RxSwiftSampleUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E6910EB162E94B351BF78786 /* Pods-RxSwiftSampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwiftSampleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxSwiftSampleTests/Pods-RxSwiftSampleTests.debug.xcconfig"; sourceTree = "<group>"; };
 		EA770602F01B1DB31527B359 /* Pods_RxSwiftSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxSwiftSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -154,6 +156,7 @@
 				B583A3CE2095DCC40044ECA0 /* Info.plist */,
 				B5CB9353209EEE1C00BF706C /* UISampleViewController.swift */,
 				B5CB935B209F60C100BF706C /* MiscViewController.swift */,
+				B5F1F55D20FB59B000B14AD4 /* ThrottleViewController.swift */,
 			);
 			path = RxSwiftSample;
 			sourceTree = "<group>";
@@ -421,6 +424,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5F1F55E20FB59B000B14AD4 /* ThrottleViewController.swift in Sources */,
 				B5CB935A209F064F00BF706C /* DialogUtils.swift in Sources */,
 				B583A3C52095DCC20044ECA0 /* DetailViewController.swift in Sources */,
 				B5CB935C209F60C100BF706C /* MiscViewController.swift in Sources */,
