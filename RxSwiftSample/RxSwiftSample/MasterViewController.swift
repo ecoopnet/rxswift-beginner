@@ -21,7 +21,7 @@ class MasterViewController: UITableViewController {
     private let items: [Item] = [
         Item(title:"RxCocoaサンプル", segue: "RxCocoaSample"),
         Item(title:"サンプルコード集", segue: "Misc"),
-        Item(title:"流量制御", segue: "Throttle"),
+        Item(title:"流量制御(Throttle/Debounce)", segue: "Throttle"),
         Item(title:"おまけ", segue: "Omake"),
     ]
 
