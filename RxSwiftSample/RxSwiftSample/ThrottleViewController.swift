@@ -24,7 +24,7 @@ class ThrottleViewController: UIViewController {
 
         debounceButton.rx.tap
             .asObservable()
-            .do(onNext: { self.log("(debounce tapped)") })
+            .do(onNext: { self.log("  (debounce tapped)") })
             .debounce(interval, scheduler: MainScheduler.instance)
             .subscribe(onNext: {
                 self.log("debounce onNext")
@@ -34,7 +34,7 @@ class ThrottleViewController: UIViewController {
 
         throttleButton.rx.tap
             .asObservable()
-            .do(onNext: { self.log("(throttle(latest: false) tapped)") })
+            .do(onNext: { self.log("  (throttle(latest: false) tapped)") })
             .throttle(interval, latest: false, scheduler: MainScheduler.instance)
             .subscribe(onNext: {
                 self.log("throttle(latest: false) onNext")
@@ -43,7 +43,7 @@ class ThrottleViewController: UIViewController {
 
         throttleLatestButton.rx.tap
             .asObservable()
-            .do(onNext: { self.log("(throttle(latest: true) tapped)") })
+            .do(onNext: { self.log("  (throttle(latest: true) tapped)") })
             .throttle(interval, latest: true, scheduler: MainScheduler.instance)
             .subscribe(onNext: {
                 self.log("throttle(latest: true) onNext")
