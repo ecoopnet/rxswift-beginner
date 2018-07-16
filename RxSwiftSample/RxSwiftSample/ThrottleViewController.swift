@@ -57,6 +57,7 @@ class ThrottleViewController: UIViewController {
         } else {
             logTextView.text = logTextView.text + "\n" + s
         }
+        print(s)
         logTextView.scrollToBottom(animated: false)
     }
 
