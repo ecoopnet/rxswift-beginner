@@ -52,18 +52,11 @@ class ThrottleViewController: UIViewController {
     }
 
     private func log(_ s: String, clear: Bool = false) {
-        if clear {
-            logTextView.text = s
-        } else {
-            logTextView.text = logTextView.text + "\n" + s
-        }
         print(s)
-        logTextView.scrollToBottom(animated: false)
+        logTextView.append(s, clear: clear)
     }
 
     private func clearLog() {
-        logTextView.text = ""
-        logTextView.scrollToTop(animated: false)
+        logTextView.clear()
     }
-
 }
