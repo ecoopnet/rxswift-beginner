@@ -10,6 +10,8 @@
 		026DD96B20C67F7193FE0AAC /* Pods_RxSwiftSampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1E2FF2EC6F34568BCFBD501 /* Pods_RxSwiftSampleTests.framework */; };
 		9203A0EA9560C60A88EDA28E /* Pods_RxSwiftSampleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6F87D807DBA0DF61DD24432 /* Pods_RxSwiftSampleUITests.framework */; };
 		A69827231700B4F682B465D3 /* Pods_RxSwiftSample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA770602F01B1DB31527B359 /* Pods_RxSwiftSample.framework */; };
+		B53C134820FCF12900999202 /* UITextView+utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53C134720FCF12900999202 /* UITextView+utils.swift */; };
+		B548BF9B20FCD71800A594E1 /* HotColdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B548BF9A20FCD71800A594E1 /* HotColdViewController.swift */; };
 		B583A3C12095DCC20044ECA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B583A3C02095DCC20044ECA0 /* AppDelegate.swift */; };
 		B583A3C32095DCC20044ECA0 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B583A3C22095DCC20044ECA0 /* MasterViewController.swift */; };
 		B583A3C52095DCC20044ECA0 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B583A3C42095DCC20044ECA0 /* DetailViewController.swift */; };
@@ -47,6 +49,8 @@
 		A4A359CEF14AB3C220D7E9F2 /* Pods-RxSwiftSampleUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwiftSampleUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxSwiftSampleUITests/Pods-RxSwiftSampleUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A6F87D807DBA0DF61DD24432 /* Pods_RxSwiftSampleUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxSwiftSampleUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1E2FF2EC6F34568BCFBD501 /* Pods_RxSwiftSampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxSwiftSampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B53C134720FCF12900999202 /* UITextView+utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+utils.swift"; sourceTree = "<group>"; };
+		B548BF9A20FCD71800A594E1 /* HotColdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotColdViewController.swift; sourceTree = "<group>"; };
 		B583A3BD2095DCC20044ECA0 /* RxSwiftSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxSwiftSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B583A3C02095DCC20044ECA0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B583A3C22095DCC20044ECA0 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
@@ -160,6 +164,7 @@
 				B5CB9353209EEE1C00BF706C /* UISampleViewController.swift */,
 				B5CB935B209F60C100BF706C /* MiscViewController.swift */,
 				B5F1F55D20FB59B000B14AD4 /* ThrottleViewController.swift */,
+				B548BF9A20FCD71800A594E1 /* HotColdViewController.swift */,
 			);
 			path = RxSwiftSample;
 			sourceTree = "<group>";
@@ -219,6 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				B5F1F56220FB5D8A00B14AD4 /* UIScrollView+scrollTo.swift */,
+				B53C134720FCF12900999202 /* UITextView+utils.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -437,10 +443,12 @@
 			files = (
 				B5F1F55E20FB59B000B14AD4 /* ThrottleViewController.swift in Sources */,
 				B5CB935A209F064F00BF706C /* DialogUtils.swift in Sources */,
+				B548BF9B20FCD71800A594E1 /* HotColdViewController.swift in Sources */,
 				B583A3C52095DCC20044ECA0 /* DetailViewController.swift in Sources */,
 				B5CB935C209F60C100BF706C /* MiscViewController.swift in Sources */,
 				B583A3C32095DCC20044ECA0 /* MasterViewController.swift in Sources */,
 				B5CB9354209EEE1C00BF706C /* UISampleViewController.swift in Sources */,
+				B53C134820FCF12900999202 /* UITextView+utils.swift in Sources */,
 				B583A3C12095DCC20044ECA0 /* AppDelegate.swift in Sources */,
 				B5F1F56320FB5D8A00B14AD4 /* UIScrollView+scrollTo.swift in Sources */,
 			);

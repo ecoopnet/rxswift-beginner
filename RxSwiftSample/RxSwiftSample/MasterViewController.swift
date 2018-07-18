@@ -22,6 +22,7 @@ class MasterViewController: UITableViewController {
         Item(title:"RxCocoaサンプル", segue: "RxCocoaSample"),
         Item(title:"サンプルコード集", segue: "Misc"),
         Item(title:"流量制御(Throttle/Debounce)", segue: "Throttle"),
+        Item(title:"Hot/Cold変換", segue: "HotCold"),
         Item(title:"おまけ", segue: "Omake"),
     ]
 

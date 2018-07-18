@@ -205,4 +205,38 @@ label2: \(self.previewLabel2.text ?? "")
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+
+    private func codeSample() {
+        let observable = Observable.from([1,2,3,4,5])
+
+        let disposables = CompositeDisposable()
+        disposables.insert(observable.subscribe())
+
+        let executeButton = UIButton()
+
+        func execA() -> Observable<String> {
+            return Observable.just("")
+        }
+        func execB() -> Observable<String> {
+            return Observable.just("")
+        }
+        func execC(_ a: String, _ b: String) -> Observable<String> {
+            return Observable.just("")
+        }
+        func handleError(_ e: Error) -> Observable<String> {
+            return Observable.just("\(e)")
+        }
+        func showResult(_ result: String) {
+            // なにか画面に表示する処理
+        }
+
+        executeButton.rx.tap // ユーザがボタンを押したら
+            .flatMap { Observable.zip(execA(), execB()) } // 非同期A,Bを実行して
+            .flatMap { (a, b) in execC(a, b) } // 非同期Cで結果を加工して
+            .catchError { e in handleError(e) } // エラー処理をして
+            .observeOn(MainScheduler.instance) // メインスレッドで
+            .subscribe(onNext: { result in showResult(result) }) // UIに結果を表示
+            .disposed(by: disposeBag) // 画面を閉じたら待つのを止める
+
+    }
 }

@@ -150,6 +150,205 @@
             </objects>
             <point key="canvasLocation" x="1649" y="-630"/>
         </scene>
+        <!--Hot Cold View Controller-->
+        <scene sceneID="11H-Sb-jNd">
+            <objects>
+                <viewController id="JoS-kr-v3o" customClass="HotColdViewController" customModule="RxSwiftSample" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TuM-Bf-s96">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="900"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Dxe-Ng-0as">
+                                <rect key="frame" x="8" y="708" width="359" height="200"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="fIw-o4-gxk"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8GG-U6-liW">
+                                <rect key="frame" x="0.0" y="64" width="375" height="644"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v3l-HF-g1A">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="644"/>
+                                        <subviews>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="2" translatesAutoresizingMaskIntoConstraints="NO" id="og0-fi-baM">
+                                                <rect key="frame" x="17" y="72" width="319" height="29"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <segments>
+                                                    <segment title="PublishSubject"/>
+                                                    <segment title="BehaviorSubject"/>
+                                                    <segment title="Cold"/>
+                                                </segments>
+                                            </segmentedControl>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="BGo-u5-22A">
+                                                <rect key="frame" x="41" y="231" width="283" height="29"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <segments>
+                                                    <segment title="N/A"/>
+                                                    <segment title="Share"/>
+                                                    <segment title="ShareReplay"/>
+                                                </segments>
+                                            </segmentedControl>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="oBY-dS-SzO">
+                                                <rect key="frame" x="35" y="608" width="283" height="29"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <segments>
+                                                    <segment title="None (0)"/>
+                                                    <segment title="1"/>
+                                                    <segment title="2"/>
+                                                    <segment title="3"/>
+                                                </segments>
+                                            </segmentedControl>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="J0q-Ph-DYV">
+                                                <rect key="frame" x="41" y="148" width="283" height="29"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <segments>
+                                                    <segment title="OFF"/>
+                                                    <segment title="ON"/>
+                                                </segments>
+                                            </segmentedControl>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="GDS-GY-hzx">
+                                                <rect key="frame" x="41" y="388" width="283" height="29"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <segments>
+                                                    <segment title="OFF"/>
+                                                    <segment title="ON"/>
+                                                </segments>
+                                            </segmentedControl>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="p8T-my-v01">
+                                                <rect key="frame" x="41" y="467" width="283" height="29"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <segments>
+                                                    <segment title="OFF"/>
+                                                    <segment title="ON"/>
+                                                </segments>
+                                            </segmentedControl>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1. Source:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HzB-uk-Sr6">
+                                                <rect key="frame" x="10" y="30" width="75" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="3. Share / Replay:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ybP-Di-k2x">
+                                                <rect key="frame" x="10" y="195" width="133" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2. Cold Operator ( map(x*2) )" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ac9-X5-P22">
+                                                <rect key="frame" x="10" y="119" width="224" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="4. Cold Operator ( map(x*3) )" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EmX-TG-4zy">
+                                                <rect key="frame" x="17" y="347" width="225" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="4. Publish:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lzx-Ba-S42">
+                                                <rect key="frame" x="17" y="438" width="80" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="f0J-cF-HlL">
+                                                <rect key="frame" x="41" y="283" width="283" height="29"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <segments>
+                                                    <segment title="Forever"/>
+                                                    <segment title="WhileConnected"/>
+                                                </segments>
+                                            </segmentedControl>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="4. Connect / RefCount:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QFB-AY-cwl">
+                                                <rect key="frame" x="17" y="508" width="175" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=". Subscribe するクライアント数:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t2k-8N-zgU">
+                                                <rect key="frame" x="17" y="565" width="251" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="cls-Yh-qIq">
+                                                <rect key="frame" x="46" y="529" width="283" height="29"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <segments>
+                                                    <segment title="Connect"/>
+                                                    <segment title="RefCount"/>
+                                                </segments>
+                                            </segmentedControl>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="644" id="jwG-IE-q35"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="v3l-HF-g1A" firstAttribute="top" secondItem="8GG-U6-liW" secondAttribute="top" id="0wq-eI-0ra"/>
+                                    <constraint firstItem="v3l-HF-g1A" firstAttribute="leading" secondItem="8GG-U6-liW" secondAttribute="leading" id="BkH-tG-W3z"/>
+                                    <constraint firstAttribute="bottom" secondItem="v3l-HF-g1A" secondAttribute="bottom" id="EtE-HR-lLL"/>
+                                    <constraint firstAttribute="trailing" secondItem="v3l-HF-g1A" secondAttribute="trailing" id="oyc-uP-zdj"/>
+                                </constraints>
+                            </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tyf-9X-Wc7">
+                                <rect key="frame" x="327" y="68" width="44" height="44"/>
+                                <color key="backgroundColor" red="0.86160069406524831" green="1" blue="0.93519052347098519" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="sRu-iN-ftV"/>
+                                    <constraint firstAttribute="width" constant="44" id="z2q-TP-qtN"/>
+                                </constraints>
+                                <state key="normal" title="実行"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="v3l-HF-g1A" firstAttribute="leading" secondItem="LrM-nn-9UC" secondAttribute="leading" id="9zk-WX-cKC"/>
+                            <constraint firstItem="Dxe-Ng-0as" firstAttribute="leading" secondItem="LrM-nn-9UC" secondAttribute="leading" constant="8" id="QJf-bU-ldZ"/>
+                            <constraint firstItem="Tyf-9X-Wc7" firstAttribute="top" secondItem="LrM-nn-9UC" secondAttribute="top" constant="4" id="SDg-1a-Rv3"/>
+                            <constraint firstItem="LrM-nn-9UC" firstAttribute="trailing" secondItem="Tyf-9X-Wc7" secondAttribute="trailing" constant="4" id="TKM-F8-86P"/>
+                            <constraint firstItem="8GG-U6-liW" firstAttribute="top" secondItem="LrM-nn-9UC" secondAttribute="top" id="W80-g4-3Ef"/>
+                            <constraint firstItem="LrM-nn-9UC" firstAttribute="trailing" secondItem="v3l-HF-g1A" secondAttribute="trailing" id="c5n-em-Inh"/>
+                            <constraint firstItem="LrM-nn-9UC" firstAttribute="trailing" secondItem="Dxe-Ng-0as" secondAttribute="trailing" constant="8" id="hpF-M1-STy"/>
+                            <constraint firstItem="LrM-nn-9UC" firstAttribute="trailing" secondItem="8GG-U6-liW" secondAttribute="trailing" id="i1a-9f-8ul"/>
+                            <constraint firstItem="8GG-U6-liW" firstAttribute="leading" secondItem="LrM-nn-9UC" secondAttribute="leading" id="q3l-Zt-x3x"/>
+                            <constraint firstItem="Dxe-Ng-0as" firstAttribute="top" secondItem="8GG-U6-liW" secondAttribute="bottom" id="rUb-jB-w0f"/>
+                            <constraint firstItem="Dxe-Ng-0as" firstAttribute="bottom" secondItem="LrM-nn-9UC" secondAttribute="bottom" constant="8" id="uG1-8y-Dfa"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="LrM-nn-9UC"/>
+                    </view>
+                    <size key="freeformSize" width="375" height="900"/>
+                    <connections>
+                        <outlet property="coldOperator1Control" destination="J0q-Ph-DYV" id="0Ho-zT-JWB"/>
+                        <outlet property="coldOperator2Control" destination="GDS-GY-hzx" id="GD3-SZ-fZ5"/>
+                        <outlet property="connectControl" destination="cls-Yh-qIq" id="kgS-w1-dgW"/>
+                        <outlet property="executeButton" destination="Tyf-9X-Wc7" id="0fC-PK-cYL"/>
+                        <outlet property="logTextView" destination="Dxe-Ng-0as" id="Dw1-D5-Mxn"/>
+                        <outlet property="publishControl" destination="p8T-my-v01" id="6Uf-H0-hH0"/>
+                        <outlet property="shareLifetimeControl" destination="f0J-cF-HlL" id="VEe-VB-voV"/>
+                        <outlet property="shareReplayControl" destination="BGo-u5-22A" id="Dfq-Jd-qVv"/>
+                        <outlet property="sourceControl" destination="og0-fi-baM" id="jX0-dm-M47"/>
+                        <outlet property="subscriptionControl" destination="oBY-dS-SzO" id="qH8-sb-ip2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gEU-KU-q3R" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-119.2" y="344.52773613193403"/>
+        </scene>
         <!--Throttle View Controller-->
         <scene sceneID="4it-3P-t1r">
             <objects>
@@ -657,6 +856,7 @@
                         <segue destination="sjF-yg-MLc" kind="show" identifier="RxCocoaSample" id="Yse-Ym-mA0"/>
                         <segue destination="2VC-Wk-eQA" kind="show" identifier="Misc" id="rDD-0l-dX8"/>
                         <segue destination="Uzl-p5-SeP" kind="show" identifier="Throttle" id="GVy-ih-MKt"/>
+                        <segue destination="JoS-kr-v3o" kind="show" identifier="HotCold" id="Y4Y-dH-h9F"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
