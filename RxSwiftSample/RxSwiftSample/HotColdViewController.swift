@@ -166,10 +166,33 @@ class HotColdViewController: UIViewController {
         switch index {
         case .publishSubject:
             log("source: publishSubject")
-            return PublishSubject.create(creator)
+            // SubjectがなぜHotと呼ばれるか？
+            // createで直接Subjectを作るとただの Cold Observable になる
+            // return PublishSubject.create(creator)
+            // 直接 onNext を流す場合も subject を subscribe してなくても流れるので Hot Observable とみなせる。
+            //            let observer = PublishSubject<Int>()
+            //            DispatchQueue.global(qos: .background).async {
+            //                self.sleepTick(5)
+            //                self.sourceData.forEach { v in
+            //                    self.log("<- emit on(.next(\(v)))")
+            //                    self.sleepTick()
+            //                    observer.on(.next(v))
+            //                }
+            //                self.log("<- emit on(.completed)")
+            //                observer.on(.completed)
+            //            }
+            //            return observer
+
+            // Subject は Observableをsubscribeすることができる(subscribeのイベント流し先になれる)ので、Subject を Hot Observable とみなせる。
+            let subject = PublishSubject<Int>()
+            Observable.create(creator).subscribe(subject).disposed(by: disposeBag)
+            return subject
         case .behaviorSubject:
             log("source: behaviorSubject")
-            return BehaviorSubject.create(creator)
+            // return BehaviorSubject.create(creator)
+            let subject = BehaviorSubject<Int>(value: 0)
+            Observable.create(creator).subscribe(subject).disposed(by: disposeBag)
+            return subject
         case .observable:
             log("source: cold observable")
             return Observable.create(creator)
