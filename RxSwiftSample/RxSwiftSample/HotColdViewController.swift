@@ -59,6 +59,8 @@ class HotColdViewController: UIViewController {
     // 0, 1, 2, 3
     @IBOutlet private weak var subscriptionControl: UISegmentedControl!
 
+    private let logSubject = PublishSubject<String>()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         clearLog()
@@ -74,15 +76,29 @@ class HotColdViewController: UIViewController {
             .bind(to: connectControl.rx.isEnabled)
             .disposed(by: disposeBag)
 
+        logSubject
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { self.logTextView.text = self.logTextView.text + $0 + "\n" })
+            .disposed(by: disposeBag)
+
     }
 
     /// 起動
     private func execute() {
         clearLog()
-        var o = createSource(SourceControlValue(rawValue: sourceControl.selectedSegmentIndex)!)
+        let sourceValue = SourceControlValue(rawValue: sourceControl.selectedSegmentIndex)!
+        let coldOp1 = BoolControlValue(rawValue: coldOperator1Control.selectedSegmentIndex)!
+        let coldOp2 = BoolControlValue(rawValue: coldOperator1Control.selectedSegmentIndex)!
+        let shareReplayControlValue = ShareReplayControlValue(rawValue: shareReplayControl.selectedSegmentIndex)!
+        let lifetime = shareLifetimeControl.selectedSegmentIndex
+        let publishType = BoolControlValue(rawValue: publishControl.selectedSegmentIndex)!
+        let connectionType = ConnectControlValue(rawValue: connectControl.selectedSegmentIndex)!
 
-        if BoolControlValue(rawValue: coldOperator1Control.selectedSegmentIndex)! == .on {
-            log("add cold operator(map {$0 * 2})")
+        DispatchQueue.global(qos: .background).async {
+        var o = self.createSource(sourceValue)
+
+        if coldOp1 == .on {
+            self.log("add cold operator(map {$0 * 2})")
             o = o.map {
                 let result = $0 * 2
                 self.log("<- map({\($0) -> \(result)}) <-")
@@ -90,12 +106,12 @@ class HotColdViewController: UIViewController {
             }
         }
 
-        o = wrapShareReplay(o,
-                            value: ShareReplayControlValue(rawValue: shareReplayControl.selectedSegmentIndex)!,
-                            scope: controlToLifetimeScope(shareLifetimeControl.selectedSegmentIndex))
+        o = self.wrapShareReplay(o,
+                            value: shareReplayControlValue,
+                            scope: controlToLifetimeScope(lifetime))
 
-        if BoolControlValue(rawValue: coldOperator2Control.selectedSegmentIndex)! == .on {
-            log("add cold operator(map {$0 * 3})")
+        if coldOp2 == .on {
+            self.log("add cold operator(map {$0 * 3})")
             o = o.map {
                 let result = $0 * 3
                 self.log("<- map({\($0) -> \(result)}) <-")
@@ -103,16 +119,14 @@ class HotColdViewController: UIViewController {
             }
         }
 
-        let publishType = BoolControlValue(rawValue: publishControl.selectedSegmentIndex)!
-        let connectionType = ConnectControlValue(rawValue: connectControl.selectedSegmentIndex)!
-        o = wrapPublishAndConnect(o,
+        o = self.wrapPublishAndConnect(o,
                                  publish: publishType,
                                  connectionType: connectionType)
 
-        let subscribers = subscriptionControl.selectedSegmentIndex
+        let subscribers = self.subscriptionControl.selectedSegmentIndex
         (0 ..< subscribers).forEach { i in
-            sleepTick(20)
-            log("add subscribe() // [\(i)]")
+            self.sleepTick(20)
+            self.log("add subscribe() // [\(i)]")
             o.subscribe({ event in
                 self.log("subscriber[\(i)].on: \(event)")
             }).disposed(by: self.disposeBag)
@@ -120,14 +134,15 @@ class HotColdViewController: UIViewController {
 
         if publishType == .on && connectionType == .connect {
             guard let connectable = o as? ConnectableObservable<Int> else {
-                log("Execution Error: observable is not connectable")
+                self.log("Execution Error: observable is not connectable")
                 return
             }
-            sleepTick()
-            log("add connect()")
-            connectable.connect().disposed(by: disposeBag)
+            self.sleepTick()
+            self.log("add connect()")
+            connectable.connect().disposed(by: self.disposeBag)
 
         }
+    }
     }
 
     private let sourceData = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -198,9 +213,10 @@ class HotColdViewController: UIViewController {
     }
     private func log(_ s: String, clear: Bool = false) {
         print(s)
-        runAsMainThread {
-            self.logTextView.append(s, clear: clear)
-        }
+        logSubject.onNext(s)
+//        runAsMainThread {
+//            self.logTextView.append(s, clear: clear)
+//        }
     }
 
     private func clearLog() {
