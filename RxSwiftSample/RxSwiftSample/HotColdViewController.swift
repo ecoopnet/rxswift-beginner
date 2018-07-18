@@ -78,7 +78,7 @@ class HotColdViewController: UIViewController {
 
         logSubject
             .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { self.logTextView.text = self.logTextView.text + $0 + "\n" })
+            .subscribe(onNext: { self.logTextView.append($0) })
             .disposed(by: disposeBag)
 
     }
@@ -88,7 +88,7 @@ class HotColdViewController: UIViewController {
         clearLog()
         let sourceValue = SourceControlValue(rawValue: sourceControl.selectedSegmentIndex)!
         let coldOp1 = BoolControlValue(rawValue: coldOperator1Control.selectedSegmentIndex)!
-        let coldOp2 = BoolControlValue(rawValue: coldOperator1Control.selectedSegmentIndex)!
+        let coldOp2 = BoolControlValue(rawValue: coldOperator2Control.selectedSegmentIndex)!
         let shareReplayControlValue = ShareReplayControlValue(rawValue: shareReplayControl.selectedSegmentIndex)!
         let lifetime = shareLifetimeControl.selectedSegmentIndex
         let publishType = BoolControlValue(rawValue: publishControl.selectedSegmentIndex)!
