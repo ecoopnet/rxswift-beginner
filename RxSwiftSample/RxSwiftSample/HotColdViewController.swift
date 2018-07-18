@@ -185,13 +185,13 @@ class HotColdViewController: UIViewController {
 
             // Subject は Observableをsubscribeすることができる(subscribeのイベント流し先になれる)ので、Subject を Hot Observable とみなせる。
             let subject = PublishSubject<Int>()
-            Observable.create(creator).subscribe(subject).disposed(by: disposeBag)
+            Observable.create(creator).subscribe(subject).disposed(by: disposeBag) // Cold -> Hot
             return subject
         case .behaviorSubject:
             log("source: behaviorSubject")
             // return BehaviorSubject.create(creator)
             let subject = BehaviorSubject<Int>(value: 0)
-            Observable.create(creator).subscribe(subject).disposed(by: disposeBag)
+            Observable.create(creator).subscribe(subject).disposed(by: disposeBag) // Cold -> Hot
             return subject
         case .observable:
             log("source: cold observable")
